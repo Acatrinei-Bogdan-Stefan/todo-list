@@ -12,32 +12,24 @@ import { TasksService } from './tasks.service';
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
-export class TasksComponent {
-@Input({required: true}) userId!:string;
-@Input({required: true}) name!:string;
-isAddingTask = false;
-
-constructor(private tasksService: TasksService){}
-
-get selectedUserTasks(){
-  return this.tasksService.getUserTasks(this.userId);
-}
-
-onCompleteTask(id: string){
+  export class TasksComponent {
+  @Input({required: true}) userId!:string;
+  @Input({required: true}) name!:string;
+  isAddingTask = false;
   
-}
-
-onStartAddTask(){
-  this.isAddingTask = true;
-}
-
-onCancelAddTask(){
-  this.isAddingTask = false;
-}
- 
-onAddTask(taskData: NewTaskData){
+  constructor(private tasksService: TasksService){}
   
-  this.isAddingTask = false;
-}
- 
+  get selectedUserTasks(){
+    return this.tasksService.getUserTasks(this.userId);
+  }
+
+  onCompleteTask(id: string){}
+
+  onStartAddTask(){
+    this.isAddingTask = true;
+  }
+
+  onCloseAddTask(){
+    this.isAddingTask = false;
+  }
 }
